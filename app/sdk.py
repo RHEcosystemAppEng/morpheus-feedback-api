@@ -11,7 +11,7 @@ def init_argilla(app):
     print("Initializing Argilla SDK...")
 
     app.argilla_client = rg.Argilla(
-        api_url=app.config['ARGILLA_URL'],
+        api_url=app.config['ARGILLA_API_URL'],
         api_key=app.config['ARGILLA_API_KEY'],
     )
     print("Done Initializing Argilla SDK...")
