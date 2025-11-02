@@ -26,7 +26,7 @@ spec:
             - name: ARGILLA_API_KEY
               value: argilla.apikey
             - name: ARGILLA_API_URL
-              value: "http://localhost:6900"   # Internal Argilla endpoint
+              value: 'http://argilla:6900'   # Internal Argilla endpoint
         - name: argilla-server
           image: argilla/argilla-server:latest
           imagePullPolicy: IfNotPresent
