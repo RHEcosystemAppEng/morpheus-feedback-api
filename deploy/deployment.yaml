@@ -18,7 +18,7 @@ spec:
         - name: morpheus-pull-secret
       containers:
         - name: flask-service
-          image: quay.io/olavtar/morpheus-feedback-api:latest
+          image: quay.io/rh-ee-rhartuv/morpheus-feedback-api:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 5001
