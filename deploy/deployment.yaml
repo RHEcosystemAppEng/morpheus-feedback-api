@@ -15,7 +15,8 @@ spec:
         app: morpheus-feedback-api
     spec:
       imagePullSecrets:
-        - name: morpheus-pull-secret
+        - name: exploit-iq-pull-secret #morpheus-pull-secret (old)
+      serviceAccountName: argilla
       containers:
         - name: flask-service
           image: quay.io/rh-ee-rhartuv/morpheus-feedback-api:latest
