@@ -13,12 +13,12 @@ def feedback():
     result = process_feedback(data)
     return jsonify(result)
 
-@api_blueprint.route('/feedback/<reportId>/exists', methods=['GET'])
-def feedback_exists(reportId):
+@api_blueprint.route('/feedback/<report_id>/exists', methods=['GET'])
+def feedback_exists(report_id):
     """
     Checks if feedback has already been submitted for a specific report ID.
     """
-    exists = check_feedback_exists(reportId)
+    exists = check_feedback_exists(report_id)
     return jsonify({"exists": exists})
 
 def register_routes(app):

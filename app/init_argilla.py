@@ -55,7 +55,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
                 required=True
             ),
             rg.LabelQuestion(
-                name="qClarity",
+                name="q_clarity",
                 title="Were the checklist questions clear and understandable?",
                 labels=[
                     "Yes, it is clear and well-supported.",
@@ -66,7 +66,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
                 required=True
             ),
             rg.LabelQuestion(
-                name="aAgreement",
+                name="a_agreement",
                 title="Do you agree with the answers provided for the checklist questions?",
                 labels=[
                     "Yes, it is clear and well-supported.",
@@ -97,7 +97,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
         ],
         metadata=[
             rg.TermsMetadataProperty(
-                name="reportId",
+                name="report_id",
                 title="Report ID",
             )
         ],

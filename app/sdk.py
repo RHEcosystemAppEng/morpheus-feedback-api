@@ -34,7 +34,7 @@ def process_feedback(data):
             }
 
         # 2) Get report_id
-        report_id = data.get("reportId")
+        report_id = data.get("report_id")
 
         print(f"Logging feedback with id: {report_id}")
 
@@ -42,13 +42,13 @@ def process_feedback(data):
             "id": report_id,
             "response": data.get("response"),
             "thumbs": data.get("thumbs"),
-            "rating": int(data.get("rating")),
+            "rating": int(data.get("rating")) if data.get("rating")is not None else None,
             "comment": data.get("comment"),
             "assessment": data.get("assessment"),
             "reason": data.get("reason"),
             "summary": data.get("summary"),
-            "qClarity": data.get("qClarity"),
-            "aAgreement": data.get("aAgreement"),
+            "q_clarity": data.get("q_clarity") or data.get("qClarity"),
+            "a_agreement": data.get("a_agreement") or data.get("aAgreement"),
         }
 
         # 4) Log the Record using Dictionary
@@ -67,7 +67,7 @@ def process_feedback(data):
         }
 
 
-def check_feedback_exists(reportId):
+def check_feedback_exists(report_id):
     """
     Checks if feedback has already been submitted for a given report ID in Argilla,
     by querying on the record external_id.
@@ -85,18 +85,18 @@ def check_feedback_exists(reportId):
             print("Dataset not found.")
             return False
 
-        # Build a filter on the record external_id (which you set via `id=reportId`)
-        filter_id = Filter(("id", "==", reportId))
+        # Build a filter on the record external_id (which you set via `id=report_id`)
+        filter_id = Filter(("id", "==", report_id))
         query = Query(filter=filter_id)
 
         # Execute the query and collect matches
         matches = dataset.records(query=query).to_list(flatten=True)
 
-        print(f"Existing feedback count for reportId {reportId}: {len(matches)}")
+        print(f"Existing feedback count for report_id {report_id}: {len(matches)}")
         return len(matches) > 0
 
     except Exception as e:
         current_app.logger.error(
-            f"Error checking feedback for reportId '{reportId}': {e}"
+            f"Error checking feedback for report_id '{report_id}': {e}"
         )
         return False
