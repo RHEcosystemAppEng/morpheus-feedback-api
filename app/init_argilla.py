@@ -22,75 +22,47 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
         ],
         questions=[
             rg.LabelQuestion(
-                name="assessment",
-                title="Do you agree with the final assessment of the vulnerability?",
+                name="question1",
+                title="How accurate do you find ExploitIQ's assessment?",
                 labels=[
-                    "Yes, it is clear and well-supported.",
-                    "Mostly, but some critical aspects are missing.",
-                    "Partially, the evidence is weak or contradictory.",
-                    "No, it is incorrect or unsupported.",
+                    "Very Accurate",
+                    "Mostly Accurate",
+                    "Somewhat Inaccurate",
+                    "Incorrect",
                 ],
                 required=True
             ),
             rg.LabelQuestion(
-                name="reason",
-                title="Is the reason for classifying the CVE clear and well-supported?",
+                name="question2",
+                title="Is the reasoning and summary of findings clear, complete, and well-supported?",
                 labels=[
-                    "Yes, it is clear and well-supported.",
-                    "Mostly, but some critical aspects are missing.",
-                    "Partially, the evidence is weak or contradictory.",
-                    "No, it is incorrect or unsupported.",
+                    "Yes",
+                    "Mostly",
+                    "Somewhat",
+                    "No",
                 ],
                 required=True
             ),
             rg.LabelQuestion(
-                name="summary",
-                title="Does the summary accurately capture the key findings and conclusions?",
+                name="question3",
+                title="Were the checklist questions and explanations easy to understand?",
                 labels=[
-                    "Yes, it is clear and well-supported.",
-                    "Mostly, but some critical aspects are missing.",
-                    "Partially, the evidence is weak or contradictory.",
-                    "No, it is incorrect or unsupported.",
+                    "Yes",
+                    "Mostly",
+                    "Somewhat",
+                    "No",
                 ],
-                required=True
-            ),
-            rg.LabelQuestion(
-                name="q_clarity",
-                title="Were the checklist questions clear and understandable?",
-                labels=[
-                    "Yes, it is clear and well-supported.",
-                    "Mostly, but some critical aspects are missing.",
-                    "Partially, the evidence is weak or contradictory.",
-                    "No, it is incorrect or unsupported.",
-                ],
-                required=True
-            ),
-            rg.LabelQuestion(
-                name="a_agreement",
-                title="Do you agree with the answers provided for the checklist questions?",
-                labels=[
-                    "Yes, it is clear and well-supported.",
-                    "Mostly, but some critical aspects are missing.",
-                    "Partially, the evidence is weak or contradictory.",
-                    "No, it is incorrect or unsupported.",
-                ],
-                required=True
-            ),
-            rg.LabelQuestion(
-                name="thumbs",
-                title="Do you like this response?",
-                labels=["👍", "👎"],
                 required=True
             ),
             rg.RatingQuestion(
                 name="rating",
-                title="Rate the response quality",
+                title="Rate the response (1-5):",
                 values=[1, 2, 3, 4, 5],
-                required=False
+                required=True
             ),
             rg.TextQuestion(
                 name="comment",
-                title="Any suggestions or comments?",
+                title="Do you have any additional feedback or suggestions to improve the analysis?",
                 use_markdown=True,
                 required=False
             )

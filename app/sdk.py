@@ -41,14 +41,11 @@ def process_feedback(data):
         record_dict = {
             "id": report_id,
             "response": data.get("response"),
-            "thumbs": data.get("thumbs"),
             "rating": int(data.get("rating")) if data.get("rating")is not None else None,
             "comment": data.get("comment"),
-            "assessment": data.get("assessment"),
-            "reason": data.get("reason"),
-            "summary": data.get("summary"),
-            "q_clarity": data.get("q_clarity") or data.get("qClarity"),
-            "a_agreement": data.get("a_agreement") or data.get("aAgreement"),
+            "question1": data.get("question1"),
+            "question2": data.get("question2"),
+            "question3": data.get("question3"),
         }
 
         # 4) Log the Record using Dictionary
