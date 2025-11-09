@@ -13,6 +13,7 @@ The **Morpheus Feedback API** is a Python Flask-based microservice designed to s
 - [Installation and Setup](#installation-and-setup)
 - [Running Locally](#running-locally)
 - [Deployment](#deployment)
+
 ---
 
 ## Features
@@ -34,20 +35,27 @@ The Morpheus Feedback API is designed as part of a multi-container Pod on OpenSh
 - **Internal Communication:** All containers communicate over the Pod’s local network, limiting external exposure.
 
 ---
+
 ## Project Structure
+
 ```plaintext
 Morpheus Feedback API
 ├── app/                   # Flask application code
-│   └── __init__.py        # Application factory
-│   └── routes.py          # API route definitions
-│   └── services.py        # Argilla communication logic
+│   ├── __init__.py        # Application factory
+│   ├── routes.py          # API route definitions
+│   ├── services.py        # Argilla communication logic
+│   ├── sdk.py             # Argilla SDK wrapper and utilities
+│   └── config.py          # Configuration management
+├── deploy/                # OpenShift deployment manifests
 ├── Dockerfile             # Docker configuration
 ├── requirements.txt       # Python dependencies
 ├── run.py                 # Flask entrypoint
 ├── tests/                 # Unit tests for the API
 └── README.md              # Project documentation
 ```
+
 ---
+
 ## Prerequisites
 
 - Python 3.9 or higher
@@ -56,39 +64,102 @@ Morpheus Feedback API
 - OpenShift (for production deployment)
 
 ---
+
 ## Installation and Setup
 
 1. Clone the Repository:
-    ```
-    git clone https://github.com/your-repo/morpheus-feedback-api.git
-    cd morpheus-feedback-api
-    ```
+   ```
+   git clone https://github.com/your-repo/morpheus-feedback-api.git
+   cd morpheus-feedback-api
+   ```
 2. Create a Virtual Environment:
-    ```
-    python -m venv venv
-    source venv/bin/activate
-    ```
-3. Install Dependencies:
-    ```
-    pip install -r requirements.txt
-    ```
-4. Set Up Configuration:
 
-    Update config.py file with the following variables:
-    ```
-    ARGILLA_API_URL=<your-argilla-api-url>
-    ARGILLA_API_KEY=<your-argilla-api-key>
-    ARGILLA_DATASET  = <your-argilla-dataset>
-    ARGILLA_WORKSPACE = <your-argilla-workspace>
-    ```
+   ```
+   python -m venv venv
+   source venv/bin/activate
+   python3.10 -m venv morpheus-feedback-api
+   source morpheus-feedback-api/bin/activate
+
+   ```
+
+3. Install Dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Set Up Argilla Container:
+
+   Create a Docker network for Argilla:
+
+   ```bash
+   docker network create argilla-net
+   ```
+
+   Start Elasticsearch container:
+
+   ```bash
+   docker run -d --name elasticsearch-for-argilla --network argilla-net \
+     -p 9200:9200 -p 9300:9300 \
+     -e "ES_JAVA_OPTS=-Xms512m -Xmx512m" \
+     -e "discovery.type=single-node" \
+     -e "xpack.security.enabled=false" \
+     docker.elastic.co/elasticsearch/elasticsearch:8.5.3
+   ```
+
+   Start Argilla Quickstart container:
+
+   ```bash
+   docker run -d --network argilla-net \
+     -e "ARGILLA_ELASTICSEARCH=http://localhost:9200" \
+     --name quickstart -p 6900:6900 \
+     argilla/argilla-quickstart:latest
+   ```
+
+   **Note:** Make sure you have both `quickstart` and `elasticsearch-for-argilla` containers running.
+
+5. Access Argilla UI:
+
+   Open your browser and navigate to:
+
+   ```
+   http://localhost:6900/sign-in
+   ```
+
+6. Set Up Configuration:
+
+   Update `config.py` file with the following variables:
+
+   ```python
+   ARGILLA_API_URL = <your-argilla-api-url>
+   ARGILLA_API_KEY = <your-argilla-api-key>
+   ARGILLA_DATASET = <your-argilla-dataset>
+   ARGILLA_WORKSPACE = <your-argilla-workspace>
+   ```
+
 ---
+
 ## Running Locally
 
 1. Start the Flask Service:
-    ```
-    python run.py
-    ```
+
+   ```bash
+   python run.py
+   ```
+
 2. Access the API:
 
-    Visit ```http://localhost:5001``` to access the API.
+   Visit `http://localhost:6900` to access the API.
+
 ---
+
+## Deployment
+
+1. Create Secrets:
+
+   Set up the required OpenShift secrets for your deployment .
+
+2. Deploy to OpenShift:
+   ```bash
+   oc apply -f deploy -n YOUR_NAMESPACE
+   ```
