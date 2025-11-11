@@ -56,7 +56,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
             ),
             rg.RatingQuestion(
                 name="rating",
-                title="Rate the response (1-5):",
+                title="Rate the response (1 = Poor, 5 = Excellent):",
                 values=[1, 2, 3, 4, 5],
                 required=True
             ),
