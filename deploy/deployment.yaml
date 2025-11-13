@@ -91,19 +91,3 @@ spec:
               value: postgres
             - name: POSTGRES_DB
               value: argilla
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   name: argilla
-#   labels:
-#     app: morpheus-feedback-api
-# spec:
-#   selector:
-#     app: morpheus-feedback-api
-#   ports:
-#     - protocol: TCP
-#       port: 6900
-#       targetPort: 6900
-#   type: ClusterIP
-# ---

@@ -41,7 +41,7 @@ def process_feedback(data):
         record_dict = {
             "id": report_id,
             "response": data.get("response"),
-            "rating": int(data.get("rating")) if data.get("rating")is not None else None,
+            "rating": int(data.get("rating")),
             "comment": data.get("comment"),
             "question1": data.get("question1"),
             "question2": data.get("question2"),
