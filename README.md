@@ -77,18 +77,31 @@ Morpheus Feedback API
    ```
    python -m venv venv
    source venv/bin/activate
-   python3.10 -m venv morpheus-feedback-api
-   source morpheus-feedback-api/bin/activate
 
    ```
 
-3. Install Dependencies:
+3. Set Up Configuration:
+
+   Update `config.py` file with the following variables:
+
+   ```python
+   ARGILLA_API_URL = <your-argilla-api-url>
+   ARGILLA_API_KEY = <your-argilla-api-key>
+   ARGILLA_DATASET = <your-argilla-dataset>
+   ARGILLA_WORKSPACE = <your-argilla-workspace>
+   ```
+
+---
+
+## Running Locally
+
+1. Install Dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-4. Set Up Argilla Container:
+2. Set Up Argilla Container:
 
    Create a Docker network for Argilla:
 
@@ -117,8 +130,9 @@ Morpheus Feedback API
    ```
 
    **Note:** Make sure you have both `quickstart` and `elasticsearch-for-argilla` containers running.
+   See https://docs.argilla.io/v2.0/getting_started/quickstart/ for more details.
 
-5. Access Argilla UI:
+3. Access Argilla UI:
 
    Open your browser and navigate to:
 
@@ -126,22 +140,7 @@ Morpheus Feedback API
    http://localhost:6900/sign-in
    ```
 
-6. Set Up Configuration:
-
-   Update `config.py` file with the following variables:
-
-   ```python
-   ARGILLA_API_URL = <your-argilla-api-url>
-   ARGILLA_API_KEY = <your-argilla-api-key>
-   ARGILLA_DATASET = <your-argilla-dataset>
-   ARGILLA_WORKSPACE = <your-argilla-workspace>
-   ```
-
----
-
-## Running Locally
-
-1. Start the Flask Service:
+4. Start the Flask Service:
 
    ```bash
    python run.py
@@ -149,9 +148,10 @@ Morpheus Feedback API
 
 2. Access the API:
 
-   Visit `http://localhost:6900` to access the API.
+   Visit `http://localhost:5001` to access the API.
 
 ---
+
 
 ## Deployment
 
@@ -161,5 +161,6 @@ Morpheus Feedback API
 
 2. Deploy to OpenShift:
    ```bash
-   oc apply -f deploy -n YOUR_NAMESPACE
+   export YOUR_NAMESPACE=yourNamespaceNameHere
+   oc apply -f deploy -n $YOUR_NAMESPACE
    ```
