@@ -146,7 +146,7 @@ Morpheus Feedback API
    python run.py
    ```
 
-2. Access the API:
+5. Access the API:
 
    Visit `http://localhost:5001` to access the API.
 
@@ -155,12 +155,22 @@ Morpheus Feedback API
 
 ## Deployment
 
-1. Create Secrets:
 
-   Set up the required OpenShift secrets for your deployment .
+1. If a namespace does not exist, create one::
 
-2. Deploy to OpenShift:
    ```bash
    export YOUR_NAMESPACE=yourNamespaceNameHere
+   oc new-project $YOUR_NAMESPACE
+   ```
+
+2. Create an image pull secret to authorize pulling the ExploitIQ container image:
+
+   ```bash
+   oc create secret generic exploit-iq-pull-secret --from-file=.dockerconfigjson=<path/to/.docker/config.json> --type=kubernetes.io/dockerconfigjson
+   ```
+
+3. Deploy to OpenShift:
+
+   ```bash
    oc apply -f deploy -n $YOUR_NAMESPACE
    ```
