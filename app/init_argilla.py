@@ -22,7 +22,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
         ],
         questions=[
             rg.LabelQuestion(
-                name="question1",
+                name="accuracy",
                 title="How accurate do you find ExploitIQ's assessment?",
                 labels=[
                     "Very Accurate",
@@ -33,7 +33,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
                 required=True
             ),
             rg.LabelQuestion(
-                name="question2",
+                name="reasoning",
                 title="Is the reasoning and summary of findings clear, complete, and well-supported?",
                 labels=[
                     "Yes",
@@ -44,7 +44,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
                 required=True
             ),
             rg.LabelQuestion(
-                name="question3",
+                name="checklist",
                 title="Were the checklist questions and explanations easy to understand?",
                 labels=[
                     "Yes",

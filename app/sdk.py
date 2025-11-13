@@ -33,19 +33,17 @@ def process_feedback(data):
                 "data": data
             }
 
-        # 2) Get report_id
-        report_id = data.get("report_id")
-
-        print(f"Logging feedback with id: {report_id}")
+        # 2) Get report_id (handle both report_id and reportId from client)
+        report_id = data.get("report_id") or data.get("reportId")
 
         record_dict = {
             "id": report_id,
             "response": data.get("response"),
             "rating": int(data.get("rating")),
             "comment": data.get("comment"),
-            "question1": data.get("question1"),
-            "question2": data.get("question2"),
-            "question3": data.get("question3"),
+            "accuracy": data.get("accuracy"),
+            "reasoning": data.get("reasoning"),
+            "checklist": data.get("checklist"),
         }
 
         # 4) Log the Record using Dictionary
