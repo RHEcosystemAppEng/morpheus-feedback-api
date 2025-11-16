@@ -79,29 +79,33 @@ Morpheus Feedback API
    source venv/bin/activate
 
    ```
+3. Install Dependencies:
 
-3. Set Up Configuration:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-   Update `config.py` file with the following variables:
+**Note:** To change the configuration, you must set the following environment variables before running the application.
 
-   ```python
-   ARGILLA_API_URL = <your-argilla-api-url>
-   ARGILLA_API_KEY = <your-argilla-api-key>
-   ARGILLA_DATASET = <your-argilla-dataset>
-   ARGILLA_WORKSPACE = <your-argilla-workspace>
+   ARGILLA_API_URL
+   ARGILLA_API_KEY
+   ARGILLA_DATASET
+   ARGILLA_WORKSPACE
+
+   Here is an example of how to set these variables in a terminal:
+   ```bash
+   export ARGILLA_API_URL="<your-argilla-api-url>"
+   export ARGILLA_API_KEY="<your-argilla-api-key>"
+   export ARGILLA_DATASET="<your-argilla-dataset>"
+   export ARGILLA_WORKSPACE="<your-argilla-workspace>"
    ```
 
 ---
 
 ## Running Locally
 
-1. Install Dependencies:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-2. Set Up Argilla Container:
+1. Set Up Argilla Container:
 
    Create a Docker network for Argilla:
 
@@ -132,7 +136,7 @@ Morpheus Feedback API
    **Note:** Make sure you have both `quickstart` and `elasticsearch-for-argilla` containers running.
    See https://docs.argilla.io/v2.0/getting_started/quickstart/ for more details.
 
-3. Access Argilla UI:
+2. Access Argilla UI:
 
    Open your browser and navigate to:
 
@@ -140,13 +144,13 @@ Morpheus Feedback API
    http://localhost:6900/sign-in
    ```
 
-4. Start the Flask Service:
+3. Start the Flask Service:
 
    ```bash
    python run.py
    ```
 
-5. Access the API:
+4. Access the API:
 
    Visit `http://localhost:5001` to access the API.
 
@@ -167,6 +171,12 @@ Morpheus Feedback API
 
    ```bash
    oc create secret generic exploit-iq-pull-secret --from-file=.dockerconfigjson=<path/to/.docker/config.json> --type=kubernetes.io/dockerconfigjson
+   ```
+
+   Create an image pull secret to authorize pulling the `Argilla` container image:
+
+   ```bash
+   oc create secret generic argilla-user-feedback-ips --from-file=.dockerconfigjson=<path/to/.docker/config.json> --type=kubernetes.io/dockerconfigjson
    ```
 
 3. Deploy to OpenShift:
