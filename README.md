@@ -85,14 +85,15 @@ Morpheus Feedback API
    pip install -r requirements.txt
    ```
 
-**Note:** To change the configuration, you must set the following environment variables before running the application.
+ **Note:** The configuration is set with default values, which can be viewed in the configuration file.
+  To change the configuration, you must set the following environment variables before running the application.
 
-   ARGILLA_API_URL
-   ARGILLA_API_KEY
-   ARGILLA_DATASET
-   ARGILLA_WORKSPACE
+- `ARGILLA_API_URL`
+- `ARGILLA_API_KEY`
+- `ARGILLA_DATASET`
+- `ARGILLA_WORKSPACE`
 
-   Here is an example of how to set these variables in a terminal:
+Here is an example of how to set these variables in a terminal:
    ```bash
    export ARGILLA_API_URL="<your-argilla-api-url>"
    export ARGILLA_API_KEY="<your-argilla-api-key>"
@@ -134,7 +135,11 @@ Morpheus Feedback API
    ```
 
    **Note:** Make sure you have both `quickstart` and `elasticsearch-for-argilla` containers running.
-   See https://docs.argilla.io/v2.0/getting_started/quickstart/ for more details.
+   
+   For more information, see:
+
+- [Elasticsearch setup](https://docs.v1.argilla.io/en/v2.8.0/getting_started/installation/deployments/docker.html)
+- [Quickstart guide](https://docs.v1.argilla.io/en/v2.8.0/getting_started/installation/deployments/docker-quickstart.html)
 
 2. Access Argilla UI:
 
@@ -143,6 +148,9 @@ Morpheus Feedback API
    ```
    http://localhost:6900/sign-in
    ```
+
+   For information on how to log in, please refer to the [Quickstart guide](https://docs.v1.argilla.io/en/v2.8.0/getting_started/installation/deployments/docker-quickstart.html).
+
 
 3. Start the Flask Service:
 
@@ -167,13 +175,7 @@ Morpheus Feedback API
    oc new-project $YOUR_NAMESPACE
    ```
 
-2. Create an image pull secret to authorize pulling the ExploitIQ container image:
-
-   ```bash
-   oc create secret generic exploit-iq-pull-secret --from-file=.dockerconfigjson=<path/to/.docker/config.json> --type=kubernetes.io/dockerconfigjson
-   ```
-
-   Create an image pull secret to authorize pulling the `Argilla` container image:
+2. Create an image pull secret to authorize pulling the `Argilla` container image:
 
    ```bash
    oc create secret generic argilla-user-feedback-ips --from-file=.dockerconfigjson=<path/to/.docker/config.json> --type=kubernetes.io/dockerconfigjson
