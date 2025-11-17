@@ -85,7 +85,8 @@ Morpheus Feedback API
    pip install -r requirements.txt
    ```
 
- **Note:** The configuration is set with default values, which can be viewed in the configuration file.
+ **Note:** The configuration is set with default values, which can be viewed in the configuration file- `morpheus-feedback-api/app/config.py`
+
   To change the configuration, you must set the following environment variables before running the application.
 
 - `ARGILLA_API_URL`
