@@ -1,6 +1,8 @@
+import os
+# Replace these placeholders with actual credentials or set via environment variables.
 class Config:
-    # Replace these placeholders with actual credentials or set via environment variables.
-    ARGILLA_API_KEY = 'argilla.apikey'
-    ARGILLA_URL = 'https://argilla-argilla.apps.ai-dev03.kni.syseng.devcluster.openshift.com/'  # Internal endpoint
-    ARGILLA_DATASET  = 'feedback-ai'
-    ARGILLA_WORKSPACE = 'rh-argilla'
+    # Configuration loaded from environment variables with defaults
+    ARGILLA_API_KEY = os.environ.get('ARGILLA_API_KEY', 'admin.apikey')
+    ARGILLA_API_URL = os.environ.get('ARGILLA_API_URL', 'http://localhost:6900')
+    ARGILLA_DATASET = os.environ.get('ARGILLA_DATASET', 'feedback-ai')
+    ARGILLA_WORKSPACE = os.environ.get('ARGILLA_WORKSPACE', 'admin')

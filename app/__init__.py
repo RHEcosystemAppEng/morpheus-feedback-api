@@ -22,12 +22,12 @@ def create_app():
             app._argilla_initialized = True
             print("Creating Argilla workspace and dataset...")
             create_workspace(
-                api_url=app.config["ARGILLA_URL"],
+                api_url=app.config["ARGILLA_API_URL"],
                 api_key=app.config["ARGILLA_API_KEY"],
                 name=app.config["ARGILLA_WORKSPACE"]
             )
             create_dataset(
-                api_url=app.config["ARGILLA_URL"],
+                api_url=app.config["ARGILLA_API_URL"],
                 api_key=app.config["ARGILLA_API_KEY"],
                 workspace=app.config["ARGILLA_WORKSPACE"],
                 dataset_name=app.config["ARGILLA_DATASET"]

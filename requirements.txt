@@ -1,2 +1,2 @@
-Flask>=2.0
-argilla
+Flask==3.1.1
+argilla==2.8.0
