@@ -37,7 +37,7 @@ def process_feedback(data):
         report_id = data.get("report_id") or data.get("reportId")
 
         record_dict = {
-            "id": report_id,
+            "report_id": report_id,
             "response": data.get("response"),
             "rating": int(data.get("rating")),
             "comment": data.get("comment"),
@@ -80,8 +80,8 @@ def check_feedback_exists(report_id):
             print("Dataset not found.")
             return False
 
-        # Build a filter on the record external_id (which you set via `id=report_id`)
-        filter_id = Filter(("id", "==", report_id))
+        # Build a filter on the record external_id (which you set via `metadata.report_id=report_id`)
+        filter_id = Filter(("metadata.report_id", "==", report_id))
         query = Query(filter=filter_id)
 
         # Execute the query and collect matches
