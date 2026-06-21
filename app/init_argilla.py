@@ -35,7 +35,7 @@ def create_dataset(api_url: str, api_key: str, workspace: str, dataset_name: str
         questions=[
             rg.LabelQuestion(
                 name="accuracy",
-                title="How accurate do you find ExploitIQ's assessment?",
+                title="How accurate do you find RHTPA exploit intelligence's assessment?",
                 labels=[
                     "Very Accurate",
                     "Mostly Accurate",

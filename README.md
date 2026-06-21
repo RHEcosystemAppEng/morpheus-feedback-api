@@ -12,9 +12,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Morpheus Feedback API
+# RHTPA exploit intelligence feedback API
 
-The **Morpheus Feedback API** is a Python Flask-based microservice designed to serve as an integration layer between the Quarkus-based Morpheus application and the Argilla backend. Its primary goal is to accept user feedback data from the Morpheus clients and forward it to the hosted Argilla instance using the Argilla Python SDK.
+The **RHTPA exploit intelligence feedback API** is a Python Flask-based microservice designed to serve as an integration layer between the Quarkus-based RHTPA exploit intelligence application and the Argilla backend. Its primary goal is to accept user feedback data from the RHTPA exploit intelligence clients and forward it to the hosted Argilla instance using the Argilla Python SDK.
 
 ---
 
@@ -42,7 +42,7 @@ The **Morpheus Feedback API** is a Python Flask-based microservice designed to s
 
 ## Architecture Overview
 
-The Morpheus Feedback API is designed as part of a multi-container Pod on OpenShift. The Pod includes:
+The RHTPA exploit intelligence feedback API is designed as part of a multi-container Pod on OpenShift. The Pod includes:
 
 - **Flask Service:** Serves as the external entry point for feedback data.
 - **Argilla Server & Dependencies:** The Argilla backend (including Argilla Server, Worker, Redis, PostgreSQL, and Elasticsearch) runs as sidecar containers.
@@ -53,7 +53,7 @@ The Morpheus Feedback API is designed as part of a multi-container Pod on OpenSh
 ## Project Structure
 
 ```plaintext
-Morpheus Feedback API
+RHTPA exploit intelligence feedback API
 ├── app/                   # Flask application code
 │   ├── __init__.py        # Application factory
 │   ├── routes.py          # API route definitions
@@ -83,8 +83,8 @@ Morpheus Feedback API
 
 1. Clone the Repository:
    ```
-   git clone https://github.com/your-repo/morpheus-feedback-api.git
-   cd morpheus-feedback-api
+   git clone https://github.com/your-repo/exploit-intelligence-feedback-api.git
+   cd exploit-intelligence-feedback-api
    ```
 2. Create a Virtual Environment:
 
@@ -99,7 +99,7 @@ Morpheus Feedback API
    pip install -r requirements.txt
    ```
 
- **Note:** The configuration is set with default values, which can be viewed in the configuration file- `morpheus-feedback-api/app/config.py`
+ **Note:** The configuration is set with default values, which can be viewed in the configuration file- `exploit-intelligence-feedback-api/app/config.py`
 
   To change the configuration, you must set the following environment variables before running the application.
 
