@@ -12,9 +12,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-# Morpheus Feedback API
+# ExploitIQ Feedback API
 
-The **Morpheus Feedback API** is a Python Flask-based microservice designed to serve as an integration layer between the Quarkus-based Morpheus application and the Argilla backend. Its primary goal is to accept user feedback data from the Morpheus clients and forward it to the hosted Argilla instance using the Argilla Python SDK.
+The **ExploitIQ Feedback API** is a Python Flask-based microservice designed to serve as an integration layer between the Quarkus-based Morpheus application and the Argilla backend. Its primary goal is to accept user feedback data from the ExploitIQ clients and forward it to the hosted Argilla instance using the Argilla Python SDK.
 
 ---
 
@@ -42,7 +42,7 @@ The **Morpheus Feedback API** is a Python Flask-based microservice designed to s
 
 ## Architecture Overview
 
-The Morpheus Feedback API is designed as part of a multi-container Pod on OpenShift. The Pod includes:
+The ExploitIQ Feedback API is designed as part of a multi-container Pod on OpenShift. The Pod includes:
 
 - **Flask Service:** Serves as the external entry point for feedback data.
 - **Argilla Server & Dependencies:** The Argilla backend (including Argilla Server, Worker, Redis, PostgreSQL, and Elasticsearch) runs as sidecar containers.
@@ -53,7 +53,7 @@ The Morpheus Feedback API is designed as part of a multi-container Pod on OpenSh
 ## Project Structure
 
 ```plaintext
-Morpheus Feedback API
+ExploitIQ Feedback API
 ├── app/                   # Flask application code
 │   ├── __init__.py        # Application factory
 │   ├── routes.py          # API route definitions
