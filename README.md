@@ -83,8 +83,8 @@ Morpheus Feedback API
 
 1. Clone the Repository:
    ```
-   git clone https://github.com/your-repo/morpheus-feedback-api.git
-   cd morpheus-feedback-api
+   git clone https://github.com/your-repo/exploit-iq-feedback-api.git
+   cd exploit-iq-feedback-api
    ```
 2. Create a Virtual Environment:
 
@@ -99,7 +99,7 @@ Morpheus Feedback API
    pip install -r requirements.txt
    ```
 
- **Note:** The configuration is set with default values, which can be viewed in the configuration file- `morpheus-feedback-api/app/config.py`
+ **Note:** The configuration is set with default values, which can be viewed in the configuration file- `exploit-iq-feedback-api/app/config.py`
 
   To change the configuration, you must set the following environment variables before running the application.
 

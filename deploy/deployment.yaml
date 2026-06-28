@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: morpheus-feedback-api
+  name: exploit-iq-feedback-api
   labels:
-    app: morpheus-feedback-api
+    app: exploit-iq-feedback-api
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: morpheus-feedback-api
+      app: exploit-iq-feedback-api
   template:
     metadata:
       labels:
-        app: morpheus-feedback-api
+        app: exploit-iq-feedback-api
     spec:
       imagePullSecrets:
         - name: argilla-user-feedback-ips
