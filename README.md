@@ -14,7 +14,7 @@ limitations under the License.
 
 # ExploitIQ Feedback API
 
-The **ExploitIQ Feedback API** is a Python Flask-based microservice designed to serve as an integration layer between the Quarkus-based Morpheus application and the Argilla backend. Its primary goal is to accept user feedback data from the ExploitIQ clients and forward it to the hosted Argilla instance using the Argilla Python SDK.
+The **ExploitIQ Feedback API** is a Python Flask-based microservice designed to serve as an integration layer between the Quarkus-based ExploitIQ application and the Argilla backend. Its primary goal is to accept user feedback data from the ExploitIQ clients and forward it to the hosted Argilla instance using the Argilla Python SDK.
 
 ---
 
